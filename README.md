@@ -7,27 +7,35 @@ Crie uma função para validar a lista de bounding boxes. Uma bounding box é v�
 Resolva esta função sem usar lambda.
 
 <h2>Resolução:</h2>
+
 ```
 areBoundingBoxesValid :: [(Float, Float, Float, Float)] -> Bool
 areBoundingBoxesValid ((x1, y1, x2, y2):rest) = 
   (x2 >= x1 && y2 >= y1) && areBoundingBoxesValid rest 
-```
+``` 
+
 <h3>Passo a passo:</h3>
 <h5>1. Tipo da Função:</h5>
+
 ```
 areBoundingBoxesValid :: [(Float, Float, Float, Float)] -> Bool
 ```
+
 Definição do nome e tipo da funçao.
 
 <h5>2. Função:</h5>
+
 ```
 areBoundingBoxesValid ((x1, y1, x2, y2):rest) = 
 ```
+
 Pega a primeira caixa e separa do restante (rest).
 <h5>3. Condição de Validação:</h5>
+
 ```
 (x2 >= x1 && y2 >= y1) && areBoundingBoxesValid rest 
 ```
+
 Verfica as coordenadas se pode ser um retangulo e retorna True caso for, se não retorna False.
 
 
