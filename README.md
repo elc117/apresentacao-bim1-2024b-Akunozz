@@ -6,27 +6,41 @@ Função 7
 Crie uma função para validar a lista de bounding boxes. Uma bounding box é válida se x2 >= x1 e y2 >= y1. A função retornará True se todas as bounding boxes da lista forem válidas, ou False em caso contrário.
 Resolva esta função sem usar lambda.
 
-##Resolução:
+<h2>Resolução:</h2>
 ```
 areBoundingBoxesValid :: [(Float, Float, Float, Float)] -> Bool
-areBoundingBoxesValid [] = True 
 areBoundingBoxesValid ((x1, y1, x2, y2):rest) = 
   (x2 >= x1 && y2 >= y1) && areBoundingBoxesValid rest 
 ```
-###Passo a passo:
-1. Tipo da Função:
+<h3>Passo a passo:</h3>
+<h5>1. Tipo da Função:</h5>
+```
 areBoundingBoxesValid :: [(Float, Float, Float, Float)] -> Bool
+```
 Definição do nome e tipo da funçao.
 
-2. Caso Base
-areBoundingBoxesValid [] = True
-Este é o caso base da recursão
-
-3. Caso Recursivo
+<h5>2. Função:</h5>
+```
 areBoundingBoxesValid ((x1, y1, x2, y2):rest) = 
-  (x2 >= x1 && y2 >= y1) && areBoundingBoxesValid rest
+```
+Pega a primeira caixa e separa do restante (rest).
+<h5>3. Condição de Validação:</h5>
+```
+(x2 >= x1 && y2 >= y1) && areBoundingBoxesValid rest 
+```
+Verfica as coordenadas se pode ser um retangulo e retorna True caso for, se não retorna False.
 
-Aqui, a função utiliza pattern matching para decompor a lista de caixas delimitadoras. Ela pega o primeiro retangulo (representada por (x1, y1, x2, y2)) e o restante da lista (rest).
+
+Outra tentativa:
+```
+areBoundingBoxesValid :: [(Float, Float, Float, Float)] -> Bool
+areBoundingBoxesValid ((x1, y1, x2, y2):rest) =
+  if isValid
+  then areBoundingBoxesValid rest
+  else False
+  where
+    isValid = x2 >= x1 && y2 >= y1
+```
 
 Referências:
 https://wiki.haskell.org/Let_vs._Where
